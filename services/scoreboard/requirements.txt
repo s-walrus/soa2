@@ -1,0 +1,2 @@
+strawberry-graphql>=0.180.5
+click>=8.1.3

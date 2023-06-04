@@ -1,4 +1,4 @@
-FROM python:3.11-slim-buster
+FROM python:3.11
 
 WORKDIR /app
 
@@ -7,5 +7,4 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-# CMD ["python3", "-m" , "flask", "run", "--host=0.0.0.0"]
-CMD ["python3", "src/main.py"]
+CMD ["python3", "-m", "flask", "--app", "src/main", "run"]

@@ -12,4 +12,4 @@ COPY . .
 # Generate GRPC schemas
 RUN python3 -m grpc_tools.protoc --experimental_allow_proto3_optional -I static --python_out=src --grpc_python_out=src static/*.proto
 
-CMD ["python3", "-u", "src/main.py"]
+CMD ["python3", "-u", "bot.py"]

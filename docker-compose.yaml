@@ -10,26 +10,22 @@ services:
       - "8080:5000"
     depends_on:
       - chat
+      - scoreboard
 
   # stores game-related information
   game-info:
     build:
       context: ./services/info/
       dockerfile: Dockerfile
-    # command: "./run"
     ports:
       - "8081:5000"
-    networks:
-      - app-tier
-    depends_on:
-      - game-info-db
 
-  game-info-db:
-    image: 'bitnami/redis:latest'
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-    networks:
-      - app-tier
+  scoreboard:
+    build:
+      context: ./services/scoreboard/
+      dockerfile: Dockerfile
+    ports:
+      - "8082:5000"
 
   # message queue for the in-game chat
   chat:
@@ -37,6 +33,12 @@ services:
     ports:
       - '15672:15672'
       - '5672:5672'
+  #
+  # use this service for testing if you prefer to run the bot in a container
+  # bot:
+  #   build:
+  #     context: ./clients/bot/
+  #     dockerfile: Dockerfile
 
 networks:
   app-tier:
