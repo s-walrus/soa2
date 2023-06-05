@@ -39,6 +39,9 @@ services:
   #   build:
   #     context: ./clients/bot/
   #     dockerfile: Dockerfile
+  #   environment:
+  #     RABBITMQ_HOST: chat
+  #     GAME_CORE_URL: game-info:5000
 
 networks:
   app-tier:
